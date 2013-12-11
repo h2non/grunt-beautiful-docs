@@ -20,9 +20,9 @@ grunt.loadNpmTasks('grunt-beautiful-docs');
 
 This plugin requires Grunt `~0.4.0`
 
-## The "bdocs" task
+## The "bfdocs" task
 
-_Run this task with the `grunt bdocs` command._
+_Run this task with the `grunt bfdocs` command._
 
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide
 
@@ -31,7 +31,7 @@ Task targets, files and options may be specified according to the grunt [Configu
 ##### Gruntfile configuration
 ```js
 grunt.initConfig({
-  bdocs: {
+  bfdocs: {
     documentation: {
       options: {
 
@@ -50,7 +50,7 @@ _See [Gruntfile][5] for more configuration examples_
 ### Options
 
 #### manifest
-Type: `string`|`object`
+Type: `string`|`object`|`array`
 Default: ''
 
 It can be an `object` like the manifest config or a string with the path to manifest.json file

@@ -24,15 +24,26 @@ module.exports = (grunt) ->
     coffee:
       tasks:
         files:
-          'tasks/docs.js': 'tasks/docs.coffee'
+          'tasks/bfdocs.js': 'tasks/bfdocs.coffee'
       options:
         bare: true
 
-    bdocs:
+    bfdocs:
       sample:
         options:
-          server: false
           title: 'Sample docs'
+          manifest: 'test/fixtures/sample/manifest.json'
+          dest: '.tmp/sample'
+        files:
+          './tmp/sample': [ 'test/fixtures/sample/*.md' ]
+      server:
+        options:
+          server: true
+          title: 'Sample server'
+          manifest: 'test/fixtures/sample/manifest.json'
+          dest: '.tmp/server'
+        files:
+          './tmp/sample': [ 'test/fixtures/sample/*.md' ]
 
     nodeunit:
       tests: ['test/*_test.coffee']
@@ -45,4 +56,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-nodeunit'
 
   grunt.registerTask 'default', ['clean', 'coffeelint', 'coffee']
-  grunt.registerTask 'test', ['clean', 'coffeelint', 'coffee', 'bdocs', 'nodeunit']
+  grunt.registerTask 'test', ['default', 'bfdocs', 'nodeunit']

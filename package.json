@@ -20,7 +20,7 @@
       "url": "https://github.com/h2non/grunt-beautiful-docs/blob/master/LICENSE"
     }
   ],
-  "main": "tasks/docs.js",
+  "main": "tasks/bfdocs.js",
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -28,7 +28,8 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "beautiful-docs": "~1.0.3"
+    "beautiful-docs": "~1.0.3",
+    "mkdirp": "~0.3.5"
   },
   "devDependencies": {
     "grunt-contrib-nodeunit": "~0.1.2",
