@@ -16,7 +16,10 @@
 # Node.js
 node_modules
 npm-debug.log
+test
+.travis.yml
+Gruntfile.coffee
 
 .tmp
-*.js
 .DS_Store
+*.coffee

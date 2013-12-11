@@ -1,89 +1,149 @@
-# grunt-beatifuldocs
+# grunt-beautiful-docs [![Build Status](https://travis-ci.org/h2non/grunt-beautiful-docs.png)](https://travis-ci.org/h2non/grunt-beautiful-docs)
 
-> Grunt plugin for Beatiful docs
+> Generate beautiful markdown documentation using Grunt
 
-## Getting Started
-This plugin requires Grunt `~0.4.2`
+## Getting started
+
+This plugin helps you to generate beautiful documentation based on markdown files using [Beautiful docs][1] from Grunt
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-beatifuldocs --save-dev
+npm install grunt-beautiful-docs --save-dev
 ```
 
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+Once the plugin has been installed, it may be enabled inside your Gruntfile:
 
 ```js
-grunt.loadNpmTasks('grunt-beatifuldocs');
+grunt.loadNpmTasks('grunt-beautiful-docs');
 ```
 
-## The "beatifuldocs" task
+This plugin requires Grunt `~0.4.0`
 
-### Overview
-In your project's Gruntfile, add a section named `beatifuldocs` to the data object passed into `grunt.initConfig()`.
+## The "bdocs" task
 
+_Run this task with the `grunt bdocs` command._
+
+Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide
+
+### Usage example
+
+##### Gruntfile configuration
 ```js
 grunt.initConfig({
-  beatifuldocs: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
+  bdocs: {
+    documentation: {
+      options: {
+
+      },
+      files: {
+        "path/to/": [ "path/to/templates/*.jade", "another/path/tmpl.jade" ]
+      }
+    }
+  }
 })
 ```
+
+_See [Gruntfile][5] for more configuration examples_
+
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### manifest
+Type: `string`|`object`
+Default: ''
 
-A string value that is used to do something with whatever.
+It can be an `object` like the manifest config or a string with the path to manifest.json file
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
+#### server
+Type: `boolean`
+Default: false
 
-A string value that is used to do something else with whatever else.
+Create an HTTP server to access the generated documentation
 
-### Usage Examples
+#### port
+Type: `number`
+Default: '8080'
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+The port on which the HTTP server shoud listen. It will be used only if the `server` option is `true`
 
-```js
-grunt.initConfig({
-  beatifuldocs: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
+#### watch
+Type: `boolean`
+Default: false
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+Watch files for modifications and reload them automatically
 
-```js
-grunt.initConfig({
-  beatifuldocs: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
+#### theme
+Type: `string`
+Default: 'default'
+
+Name of bundled theme or path to custom theme
+
+#### title
+Type: `string`
+Default: 'Beautiful docs'
+
+Title of the index page. It can be also defined from the manifest.json file
+
+#### baseUrl
+Type: `string`
+Default: ''
+
+Base url of all links
+
+#### indexOnly
+Type: `boolean`
+Default: false
+
+Only generate the index file. The last argument should be the filename of the index
+
+#### manifestsOnly
+Type: `boolean`
+Default: false
+
+Do not treat the last argument as the output dir but also as a manifest
+
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+
+Instead of a formal styleguide, take care to maintain the existing coding style.
+
+Add unit tests for any new or changed functionality
+
+### Development
+
+Clone the repository
+```shell
+$ git clone https://github.com/h2non/grunt-beautiful-docs.git && cd grunt-beautiful-docs
+```
+
+Install dependencies
+```shell
+$ npm install
+```
+
+Run tests
+```shell
+$ npm test
+```
 
 ## Release History
-_(Nothing yet)_
+
+- **0.1.0** `2013-12-11`
+    - Initial release
+
+## To Do
+
+Do you miss something? Open an issue or make a PR!
+
+## Authors
+
+* [Tomas Aparicio](http://github.com/h2non)
+
+## License
+
+Copyright (c) 2013 Tomas Aparicio
+
+Released under MIT license
+
+[1]: http://beautifuldocs.com/
