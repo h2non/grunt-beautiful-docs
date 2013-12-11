@@ -10,7 +10,7 @@ module.exports = (grunt) ->
   grunt.registerMultiTask 'bfdocs', 'Generate beautiful markdown documentation using Grunt', ->
 
     node = process.execPath
-    temp = os.tmpdir()
+    #temp = os.tmpdir() TODO!
     done = ->
     manifest = null
 
