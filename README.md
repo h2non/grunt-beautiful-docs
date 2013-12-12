@@ -140,7 +140,7 @@ $ npm test
 
 ## Release History
 
-- **0.1.0** `2013-12-11`
+- **0.1.0** `2013-12-12`
     - Initial release
 
 ## To Do
