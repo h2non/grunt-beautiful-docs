@@ -76,7 +76,7 @@ Default: null
 
 It can be an `object` like the manifest config or a string with the path to manifest.json file
 
-For more information about manifest config options, see the Beautiful docs [documentation][2]
+For more information about manifest.json config options, see the Beautiful Docs [documentation][2]
 
 #### server
 Type: `boolean`
