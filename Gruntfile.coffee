@@ -3,7 +3,7 @@ module.exports = (grunt) ->
 
     pkg: grunt.file.readJSON 'package.json'
 
-    clean: ['.tmp/**', 'tasks/*.js', 'test/**/*.js']
+    clean: ['.tmp/**', 'out/**', 'tasks/*.js', 'test/**/*.js']
 
     coffeelint:
       tasks: 'tasks/*.coffee'
@@ -36,14 +36,32 @@ module.exports = (grunt) ->
           dest: '.tmp/sample'
         files:
           './tmp/sample': [ 'test/fixtures/sample/*.md' ]
-      server:
+
+      onlyOptions:
         options:
-          server: true
-          title: 'Sample server'
+          title: 'Sample docs options'
           manifest: 'test/fixtures/sample/manifest.json'
-          dest: '.tmp/server'
-        files:
-          './tmp/sample': [ 'test/fixtures/sample/*.md' ]
+          dest: '.tmp/options'
+
+      manifests:
+        options:
+          title: 'Sample docs manifest'
+          manifest: [ 'test/fixtures/manifests/*.json' ]
+        files: [
+          {
+            src: [ 'test/fixtures/manifests/**/*.md' ]
+            dest: '.tmp/manifests'
+          }
+        ]
+
+      manifestObj:
+        options:
+          title: 'Sample object manifest'
+          dest: '.tmp/manifest'
+          manifest:
+            title: 'Super awesome docs'
+            files: [ 'test/fixtures/manifests/docs/*.md' ]
+
 
     nodeunit:
       tests: ['test/*_test.coffee']

@@ -1,6 +1,6 @@
-# grunt-beautiful-docs [![Build Status](https://travis-ci.org/h2non/grunt-beautiful-docs.png)](https://travis-ci.org/h2non/grunt-beautiful-docs)
+# grunt-beautiful-docs [![Build Status](https://travis-ci.org/h2non/grunt-beautiful-docs.png)][travis] [![Dependency Status](https://gemnasium.com/h2non/grunt-beautiful-docs.png)][dependencies] [![NPM version](https://badge.fury.io/js/grunt-beautiful-docs.png)][badge]
 
-> Generate beautiful markdown documentation using Grunt
+> Generate beautiful markdown-based documentation using Grunt
 
 ## Getting started
 
@@ -49,11 +49,22 @@ _See [Gruntfile][5] for more configuration examples_
 
 ### Options
 
+#### dest
+Type: `string`
+Default: null
+
+Path to the documentation output directory.
+
+Usually you should use the Grunt file config object to define the destination output directory,
+but if you declare this option, it will have preference
+
 #### manifest
 Type: `string`|`object`|`array`
-Default: ''
+Default: null
 
 It can be an `object` like the manifest config or a string with the path to manifest.json file
+
+For more information about manifest config options, see the Beautiful docs [documentation][2]
 
 #### server
 Type: `boolean`
@@ -147,3 +158,7 @@ Copyright (c) 2013 Tomas Aparicio
 Released under MIT license
 
 [1]: http://beautifuldocs.com/
+[2]: https://github.com/maximebf/beautiful-docs#manifests
+[travis]: https://travis-ci.org/h2non/grunt-beautiful-docs
+[badge]: http://badge.fury.io/js/grunt-beautiful-docs
+[dependencies]: https://gemnasium.com/h2non/grunt-beautiful-docs

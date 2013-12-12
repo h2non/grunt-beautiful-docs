@@ -1,6 +1,6 @@
 {
   "name": "grunt-beautiful-docs",
-  "description": "Generate beautiful markdown documentation using Grunt",
+  "description": "Generate beautiful markdown-based documentation using Grunt",
   "version": "0.1.0",
   "homepage": "https://github.com/h2non/grunt-beautiful-docs",
   "author": {
@@ -48,6 +48,7 @@
     "beautiful-docs",
     "markdown",
     "generator",
-    "docs"
+    "docs",
+    "md"
   ]
 }

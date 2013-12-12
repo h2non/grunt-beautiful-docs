@@ -1,5 +1,4 @@
 path = require 'path'
-os = require 'os'
 mkdirp = require 'mkdirp'
 
 module.exports = (grunt) ->
@@ -10,9 +9,11 @@ module.exports = (grunt) ->
   grunt.registerMultiTask 'bfdocs', 'Generate beautiful markdown documentation using Grunt', ->
 
     node = process.execPath
-    #temp = os.tmpdir() TODO!
-    done = ->
-    manifest = null
+    done = @async()
+
+    manifestData = null
+    manifests = []
+    filename = null
 
     options = @options
       manifest: null
@@ -34,55 +35,106 @@ module.exports = (grunt) ->
       grunt: false
       args: null
 
-    args = [ bfdocsBin ].concat buildOptionsArgs options
+    args = [ bfdocsBin ]
 
-    # run as async task
-    done = @async() unless options.server
+    if options.manifest?
+      if Array.isArray(options.manifest) or typeof options.manifest is 'string'
+        grunt.file.expand(options.manifest).forEach (file) ->
+          manifests.push file
+        if manifests.length > 1
+          options.manifestsOnly = true
+      else if typeof options.manifest is 'object'
+        manifestData = options.manifest
+
+        if Array.isArray manifestData.files
+          manifestData.files = grunt.file.expand(manifestData.files)
+            .filter (file) -> grunt.file.isFile file
+    else
+      grunt.fail.fatal "'manifest' option is required"
+
+    # manifest files
+    if Array.isArray(@files) and @files.length and manifestData?
+      @files.forEach (file) ->
+        options.dest = file.dest if file.dest and options.dest is './out'
+        files = file.src.filter (file) -> grunt.file.isFile file
+        manifestData.files = [] unless Array.isArray manifestData.files
+        manifestData.files.concat files
+
+    # write JSON manifest, if required
+    if manifestData?
+      writeManifestFile filename = manifestFilename(), manifestData
+      manifests.push filename
+
+    # build command arguments
+    args = args.concat buildOptionsArgs(options), manifests, [ options.dest ]
 
     # create folder recursively if it not exists
     mkdirp.sync options.dest
 
-    if options.manifest?
-      if Array.isArray options.manifest
-        grunt.file.expand options.manifest, (file) ->
-          # TODO!
-      else if typeof options.manifest is 'string'
-        manifest = [ options.manifest ]
-      else
-        manifest = []
-        manifes.push value for own value of options.manifest
-
-    ###
-    if @files
-      @files.forEach (file) ->
-        files = file.src.filter grunt.file.isFile
-        bfdocs.args = bfdocs.args.concat files
-    ###
-
-    args = args.concat manifest, [ options.dest ]
-
     # set process arguments
     bfdocs.args = args
 
-    grunt.util.spawn bfdocs, (error, result, code) ->
+    grunt.verbose.writeln "Executing command: \n#{bfdocs.cmd}\n#{bfdocs.args.join(' ')}"
+
+    if options.server
+      grunt.log.writeln "Documentation server listening in port: #{options.port}"
+
+    # todo: kill spawn process on exit
+    spawn = grunt.util.spawn bfdocs, (error, result, code) ->
       if error
-        grunt.fail.fatal "Fatal error while running the task: #{error}", 3
+        grunt.fail.fatal "cannot run the task: #{error}", 3
         done()
         return
 
       grunt.log.writeln "Documentation generated in: #{options.dest}"
 
-      if options.server
-        grunt.log.writeln "Documentation server listening in port: #{options.port}"
+      # clean file
+      deleteManifestFile filename if filename
 
       done()
 
+      # kill spawn process when node process exit
+      process.on 'exit', ->
+        spawn.kill('SIGKILL')
+
+
+  manifestFilename = ->
+    "bfdocs-manifest-#{new Date().getTime()}.json"
+
+  writeManifestFile = (filename, data) ->
+    try
+      grunt.verbose.writeln "Creating manifest temporary file: #{filename}"
+      grunt.file.write filename, JSON.stringify(data, null, 4)
+    catch e
+      grunt.fail.fatal "cannot write the temporal manifest file:\n#{e.message}"
+
+  deleteManifestFile = (filepath) ->
+    grunt.file.delete filepath, force: true
+
+  isNotReservedFlag = (flag) ->
+    [ 'manifest', 'dest' ].indexOf(flag) is -1
+
+  notEmpty = (value) ->
+    if value?
+      if typeof value is 'string'
+        if value.length
+          return yes
+      else
+        return yes
+    no
 
   buildOptionsArgs = (options) ->
     args = []
-    for own flag, value of options when value? and flag isnt 'manifest'
+    for own flag, value of options when notEmpty(flag) and isNotReservedFlag flag
       flag = strToHyphen flag
-      args.push "--#{flag}=#{value}"
+      if typeof value is 'boolean'
+        if value is true
+          args.push "--#{flag}"
+      else
+        if typeof value is 'string' and value.length
+          if value.indexOf(' ') isnt -1
+            value = '"' + value + '"'
+          args.push "--#{flag}=#{value}"
     args
 
   strToHyphen = (str) ->
