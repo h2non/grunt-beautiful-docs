@@ -34,17 +34,29 @@ grunt.initConfig({
   bfdocs: {
     documentation: {
       options: {
-
-      },
-      files: {
-        "path/to/": [ "path/to/templates/*.jade", "another/path/tmpl.jade" ]
+        title: 'My Beautiful Documentation',
+        manifest: 'manifest.json',
+        dest: 'documentation/',
+        theme: 'default'
       }
     }
   }
 })
 ```
 
-_See [Gruntfile][5] for more configuration examples_
+Example manifest.json:
+```json
+{
+    "title": "My Beautiful Documentation",
+    "files": [
+      "README.md",
+      "GUIDE.md",
+      "CHANGELOG.md"
+    ]
+}
+```
+
+_See [Gruntfile][gruntfile] and [test][test] for more configuration examples_
 
 
 ### Options
@@ -159,6 +171,8 @@ Released under MIT license
 
 [1]: http://beautifuldocs.com/
 [2]: https://github.com/maximebf/beautiful-docs#manifests
+[gruntfile]: https://github.com/h2non/grunt-beautiful-docs/blob/master/Gruntfile.coffee
+[test]: https://github.com/h2non/grunt-beautiful-docs/tree/master/test
 [travis]: https://travis-ci.org/h2non/grunt-beautiful-docs
 [badge]: http://badge.fury.io/js/grunt-beautiful-docs
 [dependencies]: https://gemnasium.com/h2non/grunt-beautiful-docs
