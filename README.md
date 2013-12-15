@@ -1,4 +1,5 @@
-# grunt-beautiful-docs [![Build Status](https://travis-ci.org/h2non/grunt-beautiful-docs.png)][travis] [![Dependency Status](https://gemnasium.com/h2non/grunt-beatiful-docs.png)][dependencies] [![NPM version](https://badge.fury.io/js/grunt-beautiful-docs.png)][badge]
+# grunt-beautiful-docs [![Build Status](https://travis-ci.org/h2non/grunt-beautiful-docs.png)][travis] [![Dependency Status](https://gemnasium.com/h2non/grunt-beautiful-docs.png)][dependencies] [![NPM version](https://badge.fury.io/js/grunt-beautiful-docs.png)][badge]
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/h2non/grunt-beautiful-docs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 > Generate beautiful markdown-based documentation using Grunt
 
@@ -176,7 +177,4 @@ Released under MIT license
 [travis]: https://travis-ci.org/h2non/grunt-beautiful-docs
 [badge]: http://badge.fury.io/js/grunt-beautiful-docs
 [dependencies]: https://gemnasium.com/h2non/grunt-beautiful-docs
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/h2non/grunt-beautiful-docs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
