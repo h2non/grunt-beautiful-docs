@@ -176,3 +176,7 @@ Released under MIT license
 [travis]: https://travis-ci.org/h2non/grunt-beautiful-docs
 [badge]: http://badge.fury.io/js/grunt-beautiful-docs
 [dependencies]: https://gemnasium.com/h2non/grunt-beautiful-docs
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/h2non/grunt-beautiful-docs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
