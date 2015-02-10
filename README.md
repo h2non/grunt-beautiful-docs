@@ -129,6 +129,11 @@ Default: false
 
 Do not treat the last argument as the output dir but also as a manifest
 
+#### bfdocsBinary
+Type: `string`
+Default: `node_modules/beautiful-docs/bin/bfdocs`
+
+Use a custom `beautiful-docs` binary path
 
 ## Contributing
 
