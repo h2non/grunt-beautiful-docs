@@ -1,4 +1,4 @@
-# grunt-beautiful-docs [![Build Status](https://travis-ci.org/h2non/grunt-beautiful-docs.png)][travis] [![Dependency Status](https://gemnasium.com/h2non/grunt-beatiful-docs.png)][dependencies] [![NPM version](https://badge.fury.io/js/grunt-beautiful-docs.png)][badge]
+# grunt-beautiful-docs [![Build Status](https://travis-ci.org/h2non/grunt-beautiful-docs.png)][travis] [![Dependency Status](https://gemnasium.com/h2non/grunt-beautiful-docs.png)][dependencies] [![NPM version](https://badge.fury.io/js/grunt-beautiful-docs.png)][badge]
 
 Generate beautiful markdown-based documentation using Grunt
 
