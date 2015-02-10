@@ -36,23 +36,6 @@ exports.docs =
 
     test.done()
 
-  manifests: (test) ->
-    test.expect 3
-
-    expected = grunt.file.read 'test/expected/super-awesome-docs/index.html'
-    actual = grunt.file.read 'out/super-awesome-docs/index.html'
-    test.equal expected, actual, 'should generate index.html properly'
-
-    expected = grunt.file.read 'test/expected/super-awesome-docs/docs.html'
-    actual = grunt.file.read 'out/super-awesome-docs/docs.html'
-    test.equal expected, actual, 'should generate docs.html properly'
-
-    expected = grunt.file.read 'test/expected/super-awesome-docs/all.html'
-    actual = grunt.file.read 'out/super-awesome-docs/all.html'
-    test.equal expected, actual, 'should generate all.html properly'
-
-    test.done()
-
   manifestObj: (test) ->
     test.expect 4
 
