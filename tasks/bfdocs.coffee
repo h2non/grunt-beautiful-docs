@@ -26,6 +26,7 @@ module.exports = (grunt) ->
       baseUrl: ''
       indexOnly: false
       theme: 'default'
+      bfdocsBinary: bfdocsBin
 
     manifestOptions =
       rootDir: null
@@ -35,7 +36,7 @@ module.exports = (grunt) ->
       grunt: false
       args: null
 
-    args = [ bfdocsBin ]
+    args = [ options.bfdocsBinary ]
 
     if options.manifest?
       if Array.isArray(options.manifest) or typeof options.manifest is 'string'

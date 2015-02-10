@@ -126,6 +126,11 @@ Default: false
 
 Do not treat the last argument as the output dir but also as a manifest
 
+#### bfdocsBinary
+Type: `string`
+Default: `node_modules/beautiful-docs/bin/bfdocs`
+
+Use a custom `beautiful-docs` binary path
 
 ## Contributing
 
@@ -176,3 +181,4 @@ Released under MIT license
 [travis]: https://travis-ci.org/h2non/grunt-beautiful-docs
 [badge]: http://badge.fury.io/js/grunt-beautiful-docs
 [dependencies]: https://gemnasium.com/h2non/grunt-beautiful-docs
+
