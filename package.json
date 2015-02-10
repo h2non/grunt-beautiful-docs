@@ -1,7 +1,7 @@
 {
   "name": "grunt-beautiful-docs",
   "description": "Generate beautiful markdown-based documentation using Grunt",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/h2non/grunt-beautiful-docs",
   "author": {
     "name": "Tomas Aparicio",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "beautiful-docs": "~1.0.3",
-    "mkdirp": "~0.3.5"
+    "mkdirp": "~0.5.0"
   },
   "devDependencies": {
     "grunt-contrib-nodeunit": "~0.1.2",
@@ -49,6 +49,6 @@
     "markdown",
     "generator",
     "docs",
-    "md"
+    "md",
   ]
 }
